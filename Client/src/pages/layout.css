@@ -1,0 +1,52 @@
+.text-button-base { font-size: 1.125rem; }
+@media (min-width: 640px) {
+    .text-button-base { font-size: 1.25rem; }
+}
+@media (min-width: 768px) {
+    .text-button-base { font-size: 1.5rem; }
+}
+@media (min-width: 1024px) {
+    .text-button-base { font-size: 1.75rem; }
+}
+
+.tracking-super-widest {
+    letter-spacing: 0.35em;
+}
+ @media (min-width: 768px) {
+    .tracking-super-widest {
+        letter-spacing: 0.4em;
+    }
+}
+@media (min-width: 1024px) {
+    .tracking-super-widest {
+        letter-spacing: 0.45em;
+    }
+}
+
+.liquid-fill-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.3s ease-out, border-color 0.3s ease-out;
+}
+
+.liquid-fill-button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: black;
+    transition: height 0.3s ease-out;
+    z-index: -1;
+    border-radius: inherit;
+}
+
+.liquid-fill-button:hover::before {
+    height: 100%;
+}
+
+.liquid-fill-button:hover {
+    color: white;
+}

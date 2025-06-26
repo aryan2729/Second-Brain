@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+
+  --color-purpleHigh : #5046e3;
+  --color-purpleLow : #e1e6ff;
+  --color-purpleMid : #807cd6;
+  --color-grayScreen: #f9fbfc;
+  --color-graySidebar: #ffffff;
+  --color-graySidebarText: #60626e;
+
+}
