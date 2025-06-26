@@ -11,6 +11,9 @@ import img5 from '../assets/5.png';
 import img3 from '../assets/6.png';
 import img6 from '../assets/11.png';
 import img8 from '../assets/8.png';
+import startVideo from '../assets/Header.mp4'
+import EndVideo from '../assets/end.mp4'
+import headerPhoto from '../assets/Second.png'
 
 
 
@@ -42,7 +45,7 @@ export const Layout = () => {
                 connect your <span className="italic font-normal">digital world</span>
             </div>
             <div className="w-full max-w-xs sm:max-w-md md:max-w-md lg:max-w-lg flex justify-center">
-                <img className="rounded-full mt-4 sm:mt-8 shadow-md w-full aspect-video object-cover overflow-hidden" src="/src/assets/second.png" />
+                <img className="rounded-full mt-4 sm:mt-8 shadow-md w-full aspect-video object-cover overflow-hidden" src={headerPhoto} />
             </div>
         </div>
 
@@ -52,7 +55,7 @@ export const Layout = () => {
                     Featured your
                 </h2>
                 <div className="flex flex-col sm:flex-row items-center">
-                    <video autoPlay loop playsInline muted className="rounded-full ml-0 sm:ml-12 shadow-lg w-full max-w-xs sm:max-w-sm aspect-video object-cover overflow-hidden" src="/src/assets/Header.mp4"></video>
+                    <video autoPlay loop playsInline muted className="rounded-full ml-0 sm:ml-12 shadow-lg w-full max-w-xs sm:max-w-sm aspect-video object-cover overflow-hidden" src={startVideo}></video>
                     <div className="text-5xl sm:text-7xl md:text-[150px] pl-0 sm:pl-4 tracking-wide font-light italic mt-4 sm:mt-0">cards</div>
                 </div>
                 <div className="mt-8 sm:mt-16 flex flex-wrap gap-4 sm:gap-10 justify-center items-center bg-black py-6 sm:py-10">
@@ -70,7 +73,7 @@ export const Layout = () => {
 
         <div className="w-full mt-2">
             <div className="w-full flex flex-col md:flex-row items-center bg-white px-4 sm:px-10 md:px-20 lg:px-40 mt-2 md:mt-4">
-                <video autoPlay loop muted playsInline className="border-none bg-white shadow-[0_0_0_0px_white] pt-5 rounded-full w-full max-w-xs sm:max-w-md md:max-w-lg" src="/src/assets/22.mp4"></video>
+                <video autoPlay loop muted playsInline className="border-none bg-white shadow-[0_0_0_0px_white] pt-5 rounded-full w-full max-w-xs sm:max-w-md md:max-w-lg" src={EndVideo}></video>
                 <div className="flex flex-col items-center">
                     <div className="text-4xl sm:text-6xl md:text-[120px] leading-tight pt-6 sm:pt-12 pl-4 sm:pl-12 font-normal text-featured-size">
                         Ready to
