@@ -6,7 +6,7 @@ import { Layout } from "./pages/Layout";
 import { ErrorPage } from "./pages/ErrorPage";
 import { Share } from "./pages/Share";
 import { CursorFollower } from "./components/CursorFollower";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 function App(){
 
