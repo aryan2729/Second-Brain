@@ -23,9 +23,15 @@ export function useCards(token: string | null) {
     axios.get(`${BACKEND_URL}/api/v1/content`, {
       headers: { Authorization: token }
     })
-      .then(res => setCards(res.data.content))
-      .catch(() => setError("Failed to fetch cards"))
-      .finally(() => {
+      .then(res => {
+        setCards((res as any).data.content);
+        if (isFirstLoad.current) {
+          setLoading(false);
+          isFirstLoad.current = false;
+        }
+      })
+      .catch(() => {
+        setError("Failed to fetch cards");
         if (isFirstLoad.current) {
           setLoading(false);
           isFirstLoad.current = false;
@@ -43,9 +49,9 @@ export function useCards(token: string | null) {
   const deleteCard = async (id: string) => {
     try {
       await axios.delete(`${BACKEND_URL}/api/v1/content`, {
-        data: { contentId: id },
-        headers: { Authorization: token }
-      });
+        headers: { Authorization: token },
+        data: { contentId: id }
+      } as any);
       setCards(cards => cards.filter(card => card._id !== id));
     } catch {
       setError("Failed to delete card");

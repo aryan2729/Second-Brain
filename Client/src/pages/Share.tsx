@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Button } from '../components/Button'
 import { Card } from '../components/Card'
-import { CreateContentModal } from '../components/CreateContentModal'
-import { PlusIcon } from '../icons/PlusIcon'
-import { ShareIcon } from '../icons/shareIcon'
-import { Sidebar } from '../components/Sidebar'
 import axios from 'axios'
-import { BACKEND_URL, SITE_URL } from '../config'
+import { BACKEND_URL } from '../config'
 import { useParams } from 'react-router-dom'
 
 export function Share() {
@@ -22,8 +17,8 @@ export function Share() {
       setError("");
       try {
         const response = await axios.get(`${BACKEND_URL}/api/v1/brain/${shareId}`);
-        setContents(response.data.content || []);
-        setUsername(response.data.username || "");
+        setContents((response as any).data.content || []);
+        setUsername((response as any).data.username || "");
       } catch (err) {
         setError("Invalid or expired share link.");
       }
