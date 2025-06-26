@@ -11,7 +11,7 @@ import img5 from '../assets/5.png';
 import img3 from '../assets/6.png';
 import img6 from '../assets/11.png';
 import img8 from '../assets/8.png';
-import startVideo from '../assets/Header.mp4'
+import startVideo from '../assets/header.mp4'
 import EndVideo from '../assets/end.mp4'
 import headerPhoto from '../assets/Second.png'
 
