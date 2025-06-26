@@ -22,7 +22,7 @@ export function Signin(){
                 username,
                 password
             });
-            const jwt = response.data.token;
+            const jwt = (response as any).data.token;
             localStorage.setItem("token", jwt);
             navigate("/dashboard");
         } catch (err: any) {

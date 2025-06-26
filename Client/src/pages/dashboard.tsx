@@ -35,8 +35,8 @@ export function Dashboard() {
         const response = await axios.get(`${BACKEND_URL}/api/v1/brain/share`, {
           headers: { 'Authorization': localStorage.getItem('token') }
         });
-        if (response.data.hash) {
-          setShareLink(`${SITE_URL}/share/${response.data.hash}`);
+        if ((response as any).data.hash) {
+          setShareLink(`${SITE_URL}/share/${(response as any).data.hash}`);
         } else {
           setShareLink(null);
         }
@@ -55,7 +55,7 @@ export function Dashboard() {
       const response = await axios.post(`${BACKEND_URL}/api/v1/brain/share`, { share: true }, {
         headers: { 'Authorization': localStorage.getItem('token') }
       });
-      setShareLink(`${SITE_URL}/share/${response.data.hash}`);
+      setShareLink(`${SITE_URL}/share/${(response as any).data.hash}`);
     } finally {
       setShareLoading(false);
     }

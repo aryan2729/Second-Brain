@@ -1,6 +1,6 @@
 # Second Brain
 
-🛜 **Live Project:** [https://second-brain-azure.vercel.app](https://second-brain-azure.vercel.app)
+🛜 **Live Project:** [vercel link](vercel link add here )
 
 A full-stack web application to organize, store, and share your digital content (YouTube, Twitter, Documents, GitHub links, and notes) in one place. Built with React, TypeScript, Vite, TailwindCSS (Client), and Node.js, Express, MongoDB, and TypeScript (Server).
 

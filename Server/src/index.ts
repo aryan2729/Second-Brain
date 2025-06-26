@@ -6,12 +6,21 @@ import {JWT_SECRET } from "./config";
 import { userMiddleware } from "./middleware";
 import { random } from "./utils";
 import cors from "cors";
+import { FRONTEND_URL } from "./config";
 
 
 const app = express();
 
+// CORS options
+const corsOptions = {
+  origin: FRONTEND_URL, 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());        
-app.use(cors());
 
 
 app.post("/api/v1/signup", async function(req , res ){                

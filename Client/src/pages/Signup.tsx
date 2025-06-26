@@ -22,8 +22,8 @@ export function Signup(){
                 username,
                 password
             });
-            if (response.data && response.data.message && response.data.message !== "User signed up") {
-                setError(response.data.message);
+            if (response.data && (response as any).data.message && (response as any).data.message !== "User signed up") {
+                setError((response as any).data.message);
                 return;
             }
             navigate("/signin");
