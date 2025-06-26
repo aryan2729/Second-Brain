@@ -38,21 +38,21 @@ const mongoose_1 = __importStar(require("mongoose"));
 const config_1 = require("./config");
 mongoose_1.default.connect(config_1.MONGO_URL);
 const UserSchema = new mongoose_1.Schema({
-    username: { type: String, unique: true }, // unique means no sameUsername 
+    username: { type: String, unique: true },
     password: { type: String }
 });
-exports.UserModel = (0, mongoose_1.model)("User", UserSchema); // should export models 
+exports.UserModel = (0, mongoose_1.model)("User", UserSchema);
 const ContentSchema = new mongoose_1.Schema({
     title: { type: String },
     text: String,
     link: { type: String },
     type: { type: String },
-    tags: [{ type: mongoose_1.default.Types.ObjectId, ref: "Tag" }], // refer tag | and tags array of tags 
-    userId: { type: mongoose_1.default.Types.ObjectId, ref: "User", required: true } // refer User and it must required 
+    tags: [{ type: mongoose_1.default.Types.ObjectId, ref: "Tag" }],
+    userId: { type: mongoose_1.default.Types.ObjectId, ref: "User", required: true }
 });
 exports.ContentModel = (0, mongoose_1.model)("Content", ContentSchema);
 const LinkSchema = new mongoose_1.Schema({
     hash: String,
-    userId: { type: mongoose_1.default.Types.ObjectId, ref: "User", required: true, unique: true } // should be unique 
+    userId: { type: mongoose_1.default.Types.ObjectId, ref: "User", required: true, unique: true }
 });
 exports.LinkModel = (0, mongoose_1.model)("Links", LinkSchema);

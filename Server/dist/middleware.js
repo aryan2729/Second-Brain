@@ -10,7 +10,7 @@ const userMiddleware = (req, res, next) => {
     const header = req.headers["authorization"];
     const decoded = jsonwebtoken_1.default.verify(header, config_1.JWT_SECRET);
     if (decoded) {
-        //@ts-ignore                        this will ignore the below error of type 
+        //@ts-ignore                       
         req.userId = decoded.id;
         next();
     }

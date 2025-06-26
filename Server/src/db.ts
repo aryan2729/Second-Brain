@@ -3,7 +3,7 @@ import {MONGO_URL} from "./config";
 import { ref } from "process";
 
 
-mongoose.connect(MONGO_URL ); 
+mongoose.connect(MONGO_URL); 
 
 
 const UserSchema = new Schema({

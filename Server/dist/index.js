@@ -12,8 +12,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// we never publish the .ts files instead we publish .js & .d.ts file only 
-// full procedure -> npm init -y , npm install -d typescript , npx tsc --init , npm install express , npm install -D @types/express , npm install mongoose , npm install jsonwebtoken , npm install -D @types/jsonwebtoken
 const express_1 = __importDefault(require("express"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const zod_1 = __importDefault(require("zod"));
@@ -22,10 +20,16 @@ const config_1 = require("./config");
 const middleware_1 = require("./middleware");
 const utils_1 = require("./utils");
 const cors_1 = __importDefault(require("cors"));
+const config_2 = require("./config");
 const app = (0, express_1.default)();
-app.use(express_1.default.json()); // always add | Middleware to parse JSON request bodies.
-app.use((0, cors_1.default)());
-// use async await in every mongodb thing or while you use it
+// CORS options
+const corsOptions = {
+    origin: config_2.FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use((0, cors_1.default)(corsOptions));
+app.use(express_1.default.json());
 app.post("/api/v1/signup", function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const requireBody = zod_1.default.object({
@@ -38,7 +42,7 @@ app.post("/api/v1/signup", function (req, res) {
                 message: "Incorrect Format",
                 error: parsedDataWithSuccess.error
             });
-            return; // return exit 
+            return;
         }
         const username = req.body.username;
         const password = req.body.password;
@@ -69,7 +73,7 @@ app.post("/api/v1/signin", function (req, res) {
         if (existingUser) {
             const token = jsonwebtoken_1.default.sign({
                 id: existingUser._id
-            }, config_1.JWT_SECRET); // here jwt secret 
+            }, config_1.JWT_SECRET);
             res.json({
                 token
             });
@@ -106,7 +110,7 @@ app.get("/api/v1/content", middleware_1.userMiddleware, (req, res) => __awaiter(
     const userId = req.userId;
     const content = yield db_1.ContentModel.find({
         userId: userId
-    }).populate("userId", "username"); // here .populate take userId of that person who created and after that select thing means whom made this content username will show | like if want to know whom created this content if we shared our content 
+    }).populate("userId", "username");
     res.json({
         content
     });
@@ -125,7 +129,6 @@ app.delete("/api/v1/content", middleware_1.userMiddleware, (req, res) => __await
 app.post("/api/v1/brain/share", middleware_1.userMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const share = req.body.share;
     if (share) {
-        //first check if already link existed then don't need to create new one 
         const exsistingLink = yield db_1.LinkModel.findOne({
             //@ts-ignore
             userId: req.userId
@@ -136,12 +139,11 @@ app.post("/api/v1/brain/share", middleware_1.userMiddleware, (req, res) => __awa
             });
             return;
         }
-        //otherwise create new link
         const hash = (0, utils_1.random)(8);
-        console.log("Generated hash:", hash); // Add this line
+        console.log("Generated hash:", hash);
         yield db_1.LinkModel.create({
             //@ts-ignore                        
-            userId: req.userId, // added ts ignore cuz we're taking userId from userMIddleware 
+            userId: req.userId,
             hash: hash
         });
         res.json({
@@ -167,14 +169,13 @@ app.get("/api/v1/brain/:sharelink", (req, res) => __awaiter(void 0, void 0, void
         res.status(411).json({
             message: "Sorry incorrect input"
         });
-        return; // exit 
+        return;
     }
-    //userId
     const content = yield db_1.ContentModel.find({
         userId: link.userId,
     });
     const user = yield db_1.UserModel.findOne({
-        _id: link.userId // always in first user that yo defined you can acess that id by only _id cuz it's in mongo | why not userId cuz in other schemas we're using userId from middleware or other schemas but this one is like parent so _id  
+        _id: link.userId
     });
     if (!user) {
         res.status(411).json({
