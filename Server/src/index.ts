@@ -13,7 +13,7 @@ const app = express();
 
 // CORS options
 const corsOptions = {
-  origin: process.env.FRONTEND_URL, 
+  origin: FRONTEND_URL, 
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
@@ -22,7 +22,11 @@ app.use(cors(corsOptions));
 
 app.use(express.json());        
 
+app.get('/', (req, res) => {
+    res.send('Backend is running!');
+  });
 
+  
 app.post("/api/v1/signup", async function(req , res ){                
 
    const requireBody = z.object({
