@@ -12,7 +12,6 @@ function App(){
 
  return <>
    <CursorFollower />
-   <Analytics/> 
    
    <BrowserRouter>
 
@@ -28,6 +27,7 @@ function App(){
     </Routes>
     
   </BrowserRouter>
+  <Analytics/> 
  </>
 }
 
