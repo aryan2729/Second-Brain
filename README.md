@@ -1,6 +1,6 @@
 # Second Brain
 
-🛜 **Live Project:** [vercel link](vercel link add here )
+🛜 **Live Project:** [https://second-brain-omega-five.vercel.app](https://second-brain-omega-five.vercel.app)
 
 A full-stack web application to organize, store, and share your digital content (YouTube, Twitter, Documents, GitHub links, and notes) in one place. Built with React, TypeScript, Vite, TailwindCSS (Client), and Node.js, Express, MongoDB, and TypeScript (Server).
 
@@ -11,6 +11,7 @@ A full-stack web application to organize, store, and share your digital content 
 - [Folder Structure](#folder-structure)
 - [Setup & Installation](#setup--installation)
 - [Environment Variables](#environment-variables)
+- [Vercel Deployment](#vercel-deployment)
 - [Scripts](#scripts)
 - [API Endpoints](#api-endpoints)
 - [Tech Stack](#tech-stack)
@@ -53,7 +54,7 @@ Second brain/
 
 ---
 
-## Setup & Installation
+## Setup & Installation (Local Development)
 
 ### Prerequisites
 - Node.js (v18+ recommended)
@@ -66,13 +67,16 @@ git clone <repo-url>
 cd "Second brain"
 ```
 
-### 2. Setup Environment Variables
+### 2. Setup Environment Variables (Local)
 Create a `.env` file in `Server/` with:
 ```
 MONGO_URL=<your-mongodb-connection-string>
 JWT_SECRET=<your-jwt-secret>
 ```
-Optionally, set `VITE_BACKEND_URL` in `Client/.env` (defaults to `http://localhost:3000`).
+Create a `.env` file in `Client/` with:
+```
+VITE_BACKEND_URL=http://localhost:3000
+```
 
 ### 3. Install Dependencies
 ```bash
@@ -97,11 +101,28 @@ npm run dev
 ---
 
 ## Environment Variables
-- **Server/.env**
+- **Server/.env** (for local dev)
   - `MONGO_URL` - MongoDB connection string
   - `JWT_SECRET` - Secret for JWT authentication
-- **Client/.env** (optional)
+- **Client/.env** (for local dev)
   - `VITE_BACKEND_URL` - Backend API URL (default: `http://localhost:3000`)
+- **Vercel (Production)**
+  - Set environment variables in the Vercel dashboard for both frontend and backend projects:
+    - **Backend:**
+      - `MONGO_URL` - MongoDB connection string
+      - `JWT_SECRET` - Secret for JWT authentication
+    - **Frontend:**
+      - `VITE_BACKEND_URL` - Backend API URL (e.g., `https://second-brain-backend-<your-vercel-suffix>.vercel.app`)
+
+---
+
+## Vercel Deployment
+
+1. **Push your code to GitHub.**
+2. **Import both `Client` and `Server` as separate projects in Vercel** (or use monorepo settings).
+3. **Set environment variables** in the Vercel dashboard for each project as described above.
+4. **Deploy!**
+5. **Access your live frontend and backend URLs from Vercel.**
 
 ---
 
