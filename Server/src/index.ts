@@ -22,9 +22,6 @@ app.use(cors(corsOptions));
 
 app.use(express.json());        
 
-app.get('/', (req, res) => {
-    res.send('Backend is running!');
-  });
 
   
 app.post("/api/v1/signup", async function(req , res ){                
@@ -239,5 +236,5 @@ app.get("/api/v1/brain/:sharelink",async (req , res) =>{
 
 })
 
-
-app.listen(3000);
+// app.listen(3000); // REMOVE or COMMENT OUT this line for serverless
+export default app;
