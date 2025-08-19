@@ -36,15 +36,34 @@ export function Signup(){
         }
     }
 
-    return <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100">
-        <div className="bg-white/80 backdrop-blur-md border border-gray-200 p-12 rounded-3xl shadow-2xl w-full max-w-md transition-all duration-300">
-            <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Signup</h2>
-            <Input ref={usernameRef} placeholder="Username" />
-            <Input ref={passwordRef} placeholder="Password" />
-            {error && <div className="text-red-500 text-center mt-2 mb-2">{error}</div>}
-            <div className="flex justify-center pt-6">
-                <Button onClick={signupFun} variant="secondary" text="Signup" fullWidth={true} loading={false}/>
-            </div>
-        </div>
+    return <div className="min-h-screen flex items-center justify-center animate-gradient bg-gradient-to-r from-indigo-800 via-purple-600 via-pink-600 via-red-500 to-stone-700 px-4">
+
+  <div className="relative p-[2px] rounded-3xl animate-glow bg-gradient-to-r from-indigo-500 via-pink-500 to-red-500 w-full max-w-sm sm:max-w-md md:max-w-md">
+    
+
+    <div className="relative bg-white/90 backdrop-blur-md p-6 sm:p-8 md:p-10 lg:p-12 rounded-3xl shadow-2xl w-full transition-all duration-500 hover:scale-105 hover:shadow-3xl overflow-hidden">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-gray-800">Signup</h2>
+      <Input ref={usernameRef} placeholder="Username" />
+      <Input ref={passwordRef} placeholder="Password" />
+      {error && <div className="text-red-500 text-center mt-2 mb-2">{error}</div>}
+      <div className="flex justify-center pt-6">
+        <Button onClick={signupFun} variant="secondary" text="Signup" fullWidth={true} loading={false}/>
+      </div>
+        
+        <div className="mt-4 sm:mt-6 text-center text-md sm:text-md text-gray-600 flex flex-col sm:flex-row items-center justify-center gap-1">
+            <span>Already have an account?</span>
+            <a
+              href="/signin"
+              className="text-indigo-600 font-medium hover:underline hover:text-indigo-700 transition-colors duration-200"
+            >
+              Sign in
+            </a>
+          </div>
+      
     </div>
+
+  </div>
+</div>
+
+
 }
